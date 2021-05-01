@@ -1,30 +1,30 @@
 <!DOCTYPE html>
-  <html>
-  <head>
-    <meta charset='utf-8'>
-    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
-    
-    <title>Image Editor</title>
-    <link rel="icon" type="image/ico" href="assets/favicon.ico">
-
-    <meta name='viewport' content='width=device-width, initial-scale=1'>
-
-    <link rel='stylesheet' type='text/css' media='screen' href='css/styles.css'>
-    <script src='javascript/main.js'></script>
-    <script src="https://unpkg.com/jimp@0.14.0/browser/lib/jimp.js"></script>
-  </head>
-  <body>
-    <div class="container">
-      <h2>Image Editor</h2>
-      <img id="image" src="https://files.catbox.moe/vvlgqw.png">
-      <div class="editor">
-        <input type="file" onchange="loadFile(event)">
-        <select id="select" onchange="editor()">
-          <option value="None">None</option>
-          <option value="Blur">Blur</option>
-          <option value="Gay">Gay</option>
-        </select>
-      </div>
+<html>
+<head>
+  <meta charset='utf-8'>
+  <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+  
+  <title>Image Editor</title>
+  <link rel="icon" type="image/ico" href="assets/favicon.ico">
+  
+  <meta name='viewport' content='width=device-width, initial-scale=1'>
+  
+  <link rel='stylesheet' type='text/css' media='screen' href='css/styles.css'>
+  <script src='javascript/main.js'></script>
+  <script src="https://unpkg.com/jimp@0.14.0/browser/lib/jimp.js"></script>
+</head>
+<body>
+  <div class="container">
+    <h2>Image Editor</h2>
+    <img id="image" src="https://files.catbox.moe/vvlgqw.png">
+    <div class="editor">
+      <input type="file" onchange="loadFile(event)">
+      <select id="select" onchange="editor()">
+        <option value="None">None</option>
+        <option value="Blur">Blur</option>
+        <option value="Gay">Gay</option>
+      </select>
     </div>
-  </body>
+  </div>
+</body>
 </html>
