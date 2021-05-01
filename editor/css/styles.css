@@ -1,0 +1,23 @@
+body {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+
+  font-family: Menlo, monospace;
+  color: #D0CEC9;
+  background-color: #181A1B;
+}
+
+.container {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.editor {
+  margin-top: 10px;
+
+  justify-content: space-between;
+}
