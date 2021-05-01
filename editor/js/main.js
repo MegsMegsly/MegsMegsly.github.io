@@ -28,4 +28,18 @@ const editor = () => {
         })
       })
   }
+
+  if (value === 'Mario') {
+    Jimp.read({ url: 'https://files.catbox.moe/w920tv.jpg' })
+      .then((background) => {
+        Jimp.read({ url: image.src })
+          .then((img) => {
+            img.resize(180, 180)
+
+            background.composite(img, 100, 80).getBase64('image/jpeg', (_error, res) => {
+              image.src = res
+            })
+          })
+      })
+  }
 }
