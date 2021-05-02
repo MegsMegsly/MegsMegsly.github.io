@@ -3,43 +3,35 @@ const loadFile = (event) => {
   image.src = window.URL.createObjectURL(event.target.files[0])
 }
 
-const editor = () => {
+const editor = async () => {
   const value = document.getElementById('select').value
   const image = document.getElementById('image')
 
   if (value === 'Blur') {
-    Jimp.read({ url: image.src })
-      .then((img) => {
-        img.blur(5).getBase64('image/jpeg', (_error, res) => {
-          image.src = res
-        })
-      })
+    const img = await Jimp.read({ url: image.src })
+
+    img.blur(5)
+
+    image.src = await img.getBase64Async('image/jpeg')
   }
 
   if (value === 'Gay') {
-    Jimp.read({ url: image.src })
-      .then((img) => {
-        Jimp.read({ url: 'https://files.catbox.moe/039lwq.png' }).then((fil) => {
-          fil.resize(image.width, image.height)
+    const img = await Jimp.read({ url: image.src })
+    const filter = await Jimp.read({ url: 'https://files.catbox.moe/039lwq.png' })
 
-          img.composite(fil, 0, 0).getBase64('image/png', (_error, res) => {
-            image.src = res
-          })
-        })
-      })
+    filter.resize(image.width, image.height)
+    img.composite(filter, 0, 0)
+
+    image.src = await img.getBase64Async('image/jpeg')
   }
 
   if (value === 'Mario') {
-    Jimp.read({ url: 'https://files.catbox.moe/w920tv.jpg' })
-      .then((background) => {
-        Jimp.read({ url: image.src })
-          .then((img) => {
-            img.resize(180, 180)
+    const img = await Jimp.read({ url: image.src })
+    const background = await Jimp.read({ url: 'https://files.catbox.moe/w920tv.jpg' })
+    
+    img.resize(180, 180)
+    background.composite(img, 100, 80)
 
-            background.composite(img, 100, 80).getBase64('image/jpeg', (_error, res) => {
-              image.src = res
-            })
-          })
-      })
+    image.src = background.getBase64Async('image/jpeg')
   }
 }
