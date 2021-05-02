@@ -32,6 +32,6 @@ const editor = async () => {
     img.resize(180, 180)
     background.composite(img, 100, 80)
 
-    image.src = background.getBase64Async('image/jpeg')
+    image.src = await background.getBase64Async('image/jpeg')
   }
 }
