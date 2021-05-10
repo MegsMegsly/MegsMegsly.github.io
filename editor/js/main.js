@@ -28,7 +28,7 @@ const editor = async () => {
   if (value === 'Mario') {
     const img = await Jimp.read({ url: image.src })
     const background = await Jimp.read({ url: 'https://files.catbox.moe/w920tv.jpg' })
-    
+
     img.resize(180, 180)
     background.composite(img, 100, 80)
 
