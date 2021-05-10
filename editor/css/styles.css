@@ -16,6 +16,11 @@ body {
   flex-direction: column;
 }
 
+#image {
+  max-width: 512px;
+  max-height: 512px;
+}
+
 .editor {
   margin-top: 10px;
 

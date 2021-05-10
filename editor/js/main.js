@@ -19,7 +19,7 @@ const editor = async () => {
     const img = await Jimp.read({ url: image.src })
     const filter = await Jimp.read({ url: 'https://files.catbox.moe/039lwq.png' })
 
-    filter.resize(image.width, image.height)
+    filter.resize(img.bitmap.width, img.bitmap.height)
     img.composite(filter, 0, 0)
 
     image.src = await img.getBase64Async('image/jpeg')
