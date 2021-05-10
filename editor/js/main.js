@@ -1,34 +1,36 @@
 const loadFile = (event) => $('#image').attr('src', window.URL.createObjectURL(event.target.files[0]))
 
-const editor = async () => {
-  const value = $('#select').val()
-  const image = $('#image')
+const readImage = (image) => Jimp.read({ url: typeof image !== 'string' ? image.attr('src') : image })
+const updateImage = async (image, source) => image.attr('src', await source.getBase64Async('image/jpeg'))
 
-  if (value === 'Blur') {
-    const img = await Jimp.read({ url: image.attr('src') })
+const presets = {
+  async blur (source) {
+    const image = await readImage(source)
 
-    img.blur(5)
+    image.blur(5)
 
-    image.attr('src', await img.getBase64Async('image/jpeg'))
-  }
+    updateImage(source, image)
+  },
 
-  if (value === 'Gay') {
-    const img = await Jimp.read({ url: image.attr('src') })
-    const filter = await Jimp.read({ url: 'https://files.catbox.moe/039lwq.png' })
+  async gay (source) {
+    const image = await readImage(source)
+    const filter = await readImage('https://files.catbox.moe/039lwq.png')
 
-    filter.resize(img.bitmap.width, img.bitmap.height)
-    img.composite(filter, 0, 0)
+    filter.resize(image.bitmap.width, image.bitmap.height)
+    image.composite(filter, 0, 0)
 
-    image.attr('src', await img.getBase64Async('image/jpeg'))
-  }
+    updateImage(source, image)
+  },
 
-  if (value === 'Mario') {
-    const img = await Jimp.read({ url: image.attr('src') })
-    const background = await Jimp.read({ url: 'https://files.catbox.moe/w920tv.jpg' })
+  async mario (source) {
+    const image = await readImage(source)
+    const background = await readImage('https://files.catbox.moe/w920tv.jpg')
 
-    img.resize(180, 180)
-    background.composite(img, 100, 80)
+    image.resize(180, 180)
+    background.composite(image, 100, 80)
 
-    image.attr('src', await background.getBase64Async('image/jpeg'))
+    updateImage(source, background)
   }
 }
+
+const editor = () => presets[$('#select').val().toLowerCase()]($('#image'))
