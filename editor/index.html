@@ -21,9 +21,13 @@
       <input type="file" onchange="loadFile(event)">
       <select id="select" onchange="editor()">
         <option value="None">None</option>
-        <option value="Blur">Blur</option>
-        <option value="Gay">Gay</option>
-        <option value="Mario">Mario</option>
+        <optgroup label="Filters">
+          <option value="Blur">Blur</option>
+          <option value="Gay">Gay</option>
+        </optgroup>
+        <optgroup label="Others">
+          <option value="Mario">Mario</option>
+        </optgroup>
       </select>
     </div>
   </div>
