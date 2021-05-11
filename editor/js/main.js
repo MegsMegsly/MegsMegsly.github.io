@@ -1,4 +1,10 @@
-const loadFile = (event) => $('#image').attr('src', window.URL.createObjectURL(event.target.files[0]))
+const loadFile = (event) => {
+  $('#image').attr('src', window.URL.createObjectURL(event.target.files[0]))
+
+  if ($('#select :selected').text().toLowerCase() !== 'none') {
+    $('#select').val('None')
+  }
+}
 
 const readImage = (image) => Jimp.read({ url: typeof image !== 'string' ? image.attr('src') : image })
 const updateImage = async (image, source) => image.attr('src', await source.getBase64Async('image/jpeg'))
