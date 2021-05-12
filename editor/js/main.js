@@ -18,6 +18,14 @@ const presets = {
     updateImage(source, image)
   },
 
+  async invert (source) {
+    const image = await readImage(source)
+
+    image.invert()
+
+    updateImage(source, image)
+  },
+
   async gay (source) {
     const image = await readImage(source)
     const filter = await readImage('https://files.catbox.moe/039lwq.png')
