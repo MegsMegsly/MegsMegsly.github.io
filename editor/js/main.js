@@ -28,7 +28,17 @@ const presets = {
 
   async gay (source) {
     const image = await readImage(source)
-    const filter = await readImage('https://files.catbox.moe/039lwq.png')
+    const filter = await readImage('./assets/png/gay.png')
+
+    filter.resize(image.bitmap.width, image.bitmap.height)
+    image.composite(filter, 0, 0)
+
+    updateImage(source, image)
+  },
+
+  async trans (source) {
+    const image = await readImage(source)
+    const filter = await readImage('./assets/png/trans.png')
 
     filter.resize(image.bitmap.width, image.bitmap.height)
     image.composite(filter, 0, 0)
@@ -38,7 +48,7 @@ const presets = {
 
   async mario (source) {
     const image = await readImage(source)
-    const background = await readImage('https://files.catbox.moe/w920tv.jpg')
+    const background = await readImage('./assets/jpeg/mario.jpg')
 
     image.resize(180, 180)
     background.composite(image, 100, 80)
