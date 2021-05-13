@@ -42,6 +42,7 @@ const presets = {
 
     filter.resize(image.bitmap.width, image.bitmap.height)
     image.composite(filter, 0, 0)
+
     updateImage(source, image)
   },
 
