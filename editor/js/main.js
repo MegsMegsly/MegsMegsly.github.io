@@ -36,6 +36,15 @@ const presets = {
     updateImage(source, image)
   },
 
+  async trans (source) {
+    const image = await readImage(source)
+    const filter = await readImage('./assets/png/trans.png')
+
+    filter.resize(image.bitmap.width, image.bitmap.height)
+    image.composite(filter, 0, 0)
+    updateImage(source, image)
+  },
+
   async mario (source) {
     const image = await readImage(source)
     const background = await readImage('https://files.catbox.moe/w920tv.jpg')
