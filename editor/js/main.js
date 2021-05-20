@@ -26,6 +26,14 @@ const presets = {
     updateImage(source, image)
   },
 
+  async fisheye (source) {
+    const image = await readImage(source)
+
+    image.fisheye({ r: 2.2 })
+
+    updateImage(source, image)
+  },
+
   async gay (source) {
     const image = await readImage(source)
     const filter = await readImage('./assets/png/gay.png')
