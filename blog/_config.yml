@@ -22,7 +22,7 @@ title: Samuel Durante Blog
 email: samueldurante.h@gmail.com
 description: >- # this means to ignore newlines until "baseurl:"
   Mostly portuguese posts, functional programming and math.
-# baseurl: "/blog" # the subpath of your site, e.g. /blog
+baseurl: "/blog" # the subpath of your site, e.g. /blog
 url: "https://samueldurantes.github.io" # the base hostname & protocol for your site, e.g. http://example.com
 twitter_username: samueldurante
 github_username:  samueldurantes
